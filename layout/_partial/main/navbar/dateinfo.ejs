@@ -10,7 +10,11 @@ function layoutDiv() {
   } else {
     const author = theme.authors ? (theme.authors[page.author] || theme.default_author) : null
     if (author) {
-      el += `<a class="author" href="${url_for(author.path)}">${author.name}</a>`
+      let name = author.name
+      if (author.github) {
+        name = author.name || get_user_name(author.github)
+      }
+      el += `<a class="author" href="${url_for(author.path)}">${name}</a>`
       el += `<span class="sep"></span>`
     }
     // 发布日期

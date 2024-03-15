@@ -10,11 +10,21 @@ function layoutArchiveList() {
   var el = ''
   var cls = ''
   if (page.author) {
-    page.title = page.author.name
+    let name = page.author.name
+    let avatar = page.author.avatar
+    let description = page.author.description
+
+    if (page.author.github) {
+      name = page.author.name || (get_user_name(page.author.github)) + " (" + page.author.github + ")"
+      avatar = page.author.avatar || theme.api_host.github + "/" + page.author.github + ".png"
+      description = page.author.description
+    }
+
+    page.title = name
     page.banner = page.author.banner
     page.banner_info = {
-      avatar: page.author.avatar,
-      subtitle: page.author.description
+      avatar: avatar,
+      subtitle: description
     }
     el += partial('_partial/main/navbar/article_banner')
     cls += ' author'
