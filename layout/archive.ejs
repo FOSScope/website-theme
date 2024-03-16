@@ -15,9 +15,10 @@ function layoutArchiveList() {
     let description = page.author.description
 
     if (page.author.github) {
-      name = page.author.name || (get_user_name(page.author.github)) + " (" + page.author.github + ")"
-      avatar = page.author.avatar || theme.api_host.github + "/" + page.author.github + ".png"
-      description = page.author.description
+      el += '<span class="ds-ghuserinfo" api="' + theme.api_host.ghapi + '/users/' + page.author.github + '"></span>'
+      name = name || '<span class="ghusername" username="' + page.author.github + '">GH-USERNAME</span>'
+      avatar = avatar || (theme.api_host.gh + '/' + page.author.github + '.png')
+      description = description || '<span class="ghbio" username="' + page.author.github + '">GH-BIO</span>'
     }
 
     page.title = name
