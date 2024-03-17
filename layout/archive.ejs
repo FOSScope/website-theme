@@ -21,6 +21,7 @@ function layoutArchiveList() {
       description = description || '<span class="ghbio" username="' + page.author.github + '">GH-BIO</span>'
     }
 
+    page.name = '作者 - ' + (page.author.name || page.author.github)
     page.title = name
     page.banner = page.author.banner
     page.banner_info = {
