@@ -17,8 +17,8 @@ function layoutArchiveList() {
 
     if (page.author.github) {
       el += '<span class="ds-ghuserinfo" api="' + theme.api_host.ghapi + '/users/' + page.author.github + '"></span>'
-      name = name || ('<span class="ghusername" username="' + page.author.github + '">GH-USERNAME</span> (<span class="ghuserlink" username="' + page.author.github + '">GH-USERLINK</span>)')
-      breadcrumbtitle = breadcrumbtitle || ('<span class="ghusername" username="' + page.author.github + '">GH-USERNAME</span> (<span class="ghuserid" username="' + page.author.github + '">GH-USERID</span>)')
+      name = name || '<span class="ghuserinfo" username="' + page.author.github + '">GH-USERINFO</span>'
+      breadcrumbtitle = breadcrumbtitle || '<span class="ghuserbreadcrumb" username="' + page.author.github + '">GH-USERBREADCRUMB</span>'
       avatar = avatar || (theme.api_host.gh + '/' + page.author.github + '.png')
       description = description || '<span class="ghbio" username="' + page.author.github + '">GH-BIO</span>'
     }
