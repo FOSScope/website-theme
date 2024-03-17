@@ -382,6 +382,8 @@ data_services:
     api: 
   ghinfo:
     js: /js/services/ghinfo.js
+  ghuserinfo:
+    js: /js/services/ghuserinfo.js
   # 网格布局类
   sites:
     js: /js/services/sites.js
@@ -589,6 +591,7 @@ default:
 
 
 api_host:
+  gh: https://github.com
   ghapi: https://api.github.com
   ghraw: https://raw.githubusercontent.com
   gist: https://gist.github.com
