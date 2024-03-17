@@ -21,7 +21,9 @@ utils.jq(() => {
             var data = JSON.parse(xhr.responseText);
 
             const login = data.login;
-            const name = (data.name + ' (<a href="https://github.com/' + login + '">@' + login + '</a>)') || '<a href="https://github.com/' + login + '">@' + login + '</a>';
+            const name = data.name || '<a href="https://github.com/' + login + '">@' + login + '</a>';
+            const id = '@' + login;
+            const link = '<a href="https://github.com/' + login + '">@' + login + '</a>';
             const bio = data.bio || '';
 
             const nameEls = document.getElementsByClassName('ghusername');
@@ -32,6 +34,28 @@ utils.jq(() => {
               const username = nameEl.getAttribute('username');
               if (username.toLocaleLowerCase == login.toLocaleLowerCase) {
                 nameEl.innerHTML = name;
+              }
+            }
+
+            const idEls = document.getElementsByClassName('ghuserid');
+            for (var i = 0; i < idEls.length; i++) {
+              console.log(idEls[i]);
+              const idEl = idEls[i];
+              console.log(idEl);
+              const username = idEl.getAttribute('username');
+              if (username.toLocaleLowerCase == login.toLocaleLowerCase) {
+                idEl.innerHTML = id;
+              }
+            }
+
+            const linkEls = document.getElementsByClassName('ghuserlink');
+            for (var i = 0; i < linkEls.length; i++) {
+              console.log(linkEls[i]);
+              const linkEl = linkEls[i];
+              console.log(linkEl);
+              const username = linkEl.getAttribute('username');
+              if (username.toLocaleLowerCase == login.toLocaleLowerCase) {
+                linkEl.innerHTML = link;
               }
             }
 

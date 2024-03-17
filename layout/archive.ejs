@@ -11,17 +11,20 @@ function layoutArchiveList() {
   var cls = ''
   if (page.author) {
     let name = page.author.name
+    let breadcrumbtitle = page.author.name
     let avatar = page.author.avatar
     let description = page.author.description
 
     if (page.author.github) {
       el += '<span class="ds-ghuserinfo" api="' + theme.api_host.ghapi + '/users/' + page.author.github + '"></span>'
-      name = name || '<span class="ghusername" username="' + page.author.github + '">GH-USERNAME</span>'
+      name = name || ('<span class="ghusername" username="' + page.author.github + '">GH-USERNAME</span> (<span class="ghuserlink" username="' + page.author.github + '">GH-USERLINK</span>)')
+      breadcrumbtitle = breadcrumbtitle || ('<span class="ghusername" username="' + page.author.github + '">GH-USERNAME</span> (<span class="ghuserid" username="' + page.author.github + '">GH-USERID</span>)')
       avatar = avatar || (theme.api_host.gh + '/' + page.author.github + '.png')
       description = description || '<span class="ghbio" username="' + page.author.github + '">GH-BIO</span>'
     }
 
     page.name = '作者 - ' + (page.author.name || page.author.github)
+    page.breadcrumbtitle = breadcrumbtitle
     page.title = name
     page.banner = page.author.banner
     page.banner_info = {
