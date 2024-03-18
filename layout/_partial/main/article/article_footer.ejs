@@ -66,8 +66,11 @@ function layoutDiv() {
     if (author) {
       license = license.replace('{author.name}', author.name).replace('{author.url}', author.url)
     }
+    el += `<section id="license">`
+    if (page.authorInfo) {
+      el += `<div class="body">${markdown(page.authorInfo)}</div><hr/>`
+    }
     el += `
-    <section id="license">
       <div class="header"><span>${__('meta.license')}</span></div>
       <div class="body">${markdown(license)}</div>
     </section>
