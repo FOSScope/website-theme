@@ -26,6 +26,21 @@ utils.jq(() => {
             const link = '<a href="https://github.com/' + login + '">@' + login + '</a>';
             const bio = data.bio || '';
 
+            const ghusernameEls = document.getElementsByClassName('ghusername');
+            for (var i = 0; i < ghusernameEls.length; i++) {
+              console.log(ghusernameEls[i]);
+              const ghusernameEl = ghusernameEls[i];
+              console.log(ghusernameEl);
+              const username = ghusernameEl.getAttribute('username');
+              if (username.toLocaleLowerCase == login.toLocaleLowerCase) {
+                if (name) {
+                  ghusernameEl.innerHTML = name;
+                } else {
+                  ghusernameEl.innerHTML = id;
+                }
+              }
+            }
+
             const ghuserinfoEls = document.getElementsByClassName('ghuserinfo');
             for (var i = 0; i < ghuserinfoEls.length; i++) {
               console.log(ghuserinfoEls[i]);
