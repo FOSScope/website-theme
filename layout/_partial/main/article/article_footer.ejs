@@ -44,6 +44,7 @@ function layoutDiv() {
   if (page.authorInfo?.length > 0) {
     el += `
     <section id="authorInfo">
+      <div class="header"><span>${__('meta.authorInfo')}</span></div>
       <div class="body">${markdown(page.authorInfo)}</div>
     </section>
     `
