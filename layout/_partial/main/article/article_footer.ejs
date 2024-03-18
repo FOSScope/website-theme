@@ -5,6 +5,9 @@ function layoutDiv() {
   if (page.references?.length > 0) {
     item.push('references');
   }
+  if (page.authorInfo?.length > 0) {
+    item.push('authorInfo');
+  }
   if (theme.article.license?.length > 0) {
     item.push('license');
   }
@@ -14,6 +17,7 @@ function layoutDiv() {
   if (item.length === 0) {
     return el;
   }
+
   el += `<div class="article-footer${scrollreveal(' ')} fs14">`
   if (page.references?.length > 0) {
     function refList() {
@@ -33,6 +37,14 @@ function layoutDiv() {
       <div class="body">
         <ul>${refList()}</ul>
       </div>
+    </section>
+    `
+  }
+
+  if (page.authorInfo?.length > 0) {
+    el += `
+    <section id="authorInfo">
+      <div class="body">${markdown(page.authorInfo)}</div>
     </section>
     `
   }
@@ -66,11 +78,8 @@ function layoutDiv() {
     if (author) {
       license = license.replace('{author.name}', author.name).replace('{author.url}', author.url)
     }
-    el += `<section id="license">`
-    if (page.authorInfo) {
-      el += `<div class="body">${markdown(page.authorInfo)}</div><hr/>`
-    }
     el += `
+    <section id="license">
       <div class="header"><span>${__('meta.license')}</span></div>
       <div class="body">${markdown(license)}</div>
     </section>
