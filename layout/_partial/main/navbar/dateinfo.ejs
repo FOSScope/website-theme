@@ -17,7 +17,7 @@ function layoutDiv() {
             let name = author.name
             if (author.github) {
               el += '<span class="ds-ghuserinfo" api="' + theme.api_host.ghapi + '/users/' + author.github + '"></span>'
-              name = name || '<span class="ghusername" username="' + author.github + '">GH-USERNAME</span>'
+              name = name || '<span class="ghusername-' + author.github + '">GH-USERNAME</span>'
             }
             el += `<a class="author" href="${url_for(author.path)}">${name}</a>`
             el += `<span class="sep"></span>`
