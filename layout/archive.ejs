@@ -5,6 +5,8 @@ if (page.menu_id == undefined) {
 }
 if (page.author) {
   page.header = false;
+  page.breadcrumb = true;
+  page.layout = 'author';
 }
 function layoutArchiveList() {
   var el = ''
@@ -39,13 +41,18 @@ function layoutArchiveList() {
   }
   el += `<div class="post-list${cls} archives">`
   var years = []
-  const posts = page.author != null ? site.posts.filter(p => (p.author || theme.default_author.id) == page.author.id) : site.posts
+
+  const posts = page.author != null ? site.posts.filter(
+    post => post.author && post.author.includes(page.author.id) || theme.default_author && post.author == theme.default_author.id
+  ) : site.posts
+
   posts.sort('date', -1).each(function(post) {
   	post.year = date(post.date, 'YYYY')
   	  if (post.year && (years.includes(post.year) == false) && (post.title || post.date)) {
   		  years.push(post.year)
     }
   })
+
   for (let year of years) {
     el += `<article class="${scrollreveal('')}" id="archive">`
   	el += `<div class='archive-header h4'>${year}</div>`
