@@ -33,6 +33,8 @@ function layoutBreadcrumb() {
     // 首页
     if (theme.wiki.tree[page.wiki]) {
       el += partial('breadcrumb/wiki')
+    } else if (page.notebook) {
+      el += partial('breadcrumb/note')
     } else if (page.layout == 'post') {
       el += partial('breadcrumb/blog')
     } else if (page.layout == 'author') {
